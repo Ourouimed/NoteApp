@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { AuthContext } from "@/contexts/AuthContext";
 import { PopupContext } from "@/contexts/PopupContext";
 import { useContext } from "react";
 export default function Header (){
+    const { userData : { user_metadata : { full_name , user_id}} } = useContext(AuthContext)
     const { handleOpenAddNotePopup } = useContext(PopupContext)
     return (
     <div className="bg-card text-card-foreground border px-6 py-2 w-full flex items-center justify-between">
@@ -24,8 +26,8 @@ export default function Header (){
             <div className="flex items-center gap-2">
                 <Button className='size-10' variant='outline'>MO</Button>
                 <div>
-                  <h4>Medamine Ouroui</h4>
-                  <p className="text-muted-foreground text-sm">ourouimed</p>
+                  <h4>{full_name}</h4>
+                  <p className="text-muted-foreground text-sm">{user_id}</p>
                 </div>
             </div>
             
